@@ -1,40 +1,41 @@
-if [ ! -e /home/vagrant/.vim/bundle/Vundle.vim ]
-then 
+#if [ ! -e /home/ubuntu/.vim/bundle/Vundle.vim ]
+#then 
 apt-get -y update
 apt-get -y upgrade
 apt-get -y install git
-git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
-cp /vagrant/.vimrc /home/vagrant/.vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git /home/ubuntu/.vim/bundle/Vundle.vim
+cp /vagrant/.vimrc /home/ubuntu/.vimrc
 
 # Installing NodeJS
-
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs
+apt-get install -y nodejs
 
 # Updating NPM, goes with nodeJS
-npm install -y npm@latest -g
+apt-get install -y npm
 
-# Ubuntu vim compilation needs
-apt-get build-dep -y vim-gnome
-fi
+# Installing development tools and cmake
+apt-get install -y build-essential cmake
 
-# If fingerprint key is missing then generate one
-if [ ! -e githubKey ]
-then 	
-	touch /etc/ssh/known_hosts
-	ssh-keyscan github.com >> githubKey
-	ssh-keygen -lf githubKey >> /etc/ssh/known_hosts 
-#	chown vagrant:vagrant /home/vagrant/.ssh/known_hosts
-fi
+# install Python headers
+apt-get install -y python-dev python3-dev
 
-#clone git
-git clone git@github.com:vim/vim.git /home/vagrant/vimsource/
-#cd /home/vagrant/vimsource/
-#make & make install
-chown -R vagrant:vagrant /home/vagrant/*
+# install tidy
+apt-get install tidy
 
+# install typescript
+npm install -g typescript
 
+# install csslint
+npm install -g csslint
+# Expect to run on vagrant provision
+
+# Check whether it works before you manually do the :PluginInstall on vimrc
+/home/ubuntu/.vim/bundle/youcompleteme/install.py --tern-completer
 
 
+chown -R ubuntu:ubuntu /home/ubuntu/
 
-#sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+#su ubuntu
+#/home/ubuntu/.vim/bundle/
+
+
+

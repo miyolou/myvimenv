@@ -1,15 +1,18 @@
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" Autocomplete option in vim command mode
+set wildmenu
+set wildmode=longest,list,full
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ts_checkers = ['tslint']
-let g:syntastic_html_checkers = ['syntastic-checkers-html']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-" let g:syntastic_enable_signs = 1
+let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ts_checkers = ['tslint']
+let g:syntastic_html_checkers = ['tidy']
 let g:airline_theme='simple'
 " let g:airline_section_b = '%{strftime("%c")}'
 " let g:airline_section_y = 'BN: %{bufnr("%")}'
@@ -33,6 +36,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
+Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline-themes'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
